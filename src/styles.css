@@ -25,3 +25,7 @@ div:before {
     height: 13px;
     z-index: -1;
 }
+
+div:hover{
+    background-color: #75b7de;
+}
