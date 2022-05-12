@@ -8,16 +8,19 @@ import {IPost} from "../../models/IPost";
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-@Input()
-post: IPost = {
-  userId: 1,
-  id: 1,
-  title: '',
-  body: '',
-}
+
+ @Input()
+ post: IPost ;
+
   constructor() { }
 
+   changeName() : IPost {
+      const title = this.post.title[0].toUpperCase() + this.post.title.slice(1);
+      return  {...this.post, title: title};
+   }
   ngOnInit(): void {
+      this.post =  this.changeName();
   }
+
 
 }
