@@ -2,30 +2,65 @@
 app-root{
     font-size: 1.1rem;
     font-family: "Helvetica";
-    display: flex;
-    gap: .4rem;
-    justify-content: space-between;
     margin: .5rem .8rem;
 }
 
-div{
-    position: relative;
+ul {
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+li, div{
     padding: .5rem .1rem;
+    list-style: none;
 }
 
-div:before {
-    position: absolute;
-    content: " ";
-    left: -20px;
-    top: 10px;
-    background: rgb(252,254,120);
-    background: linear-gradient(90deg, rgba(0,212,255,1) 50%, rgba(252,254,120,1) 50%);
-    border: .5px solid black;
-    width: 18px;
-    height: 13px;
-    z-index: -1;
+li > a {
+    text-decoration: none;
+    background-color: black;
+    padding: 1rem;
+    color: white;
 }
 
-div:hover{
-    background-color: #75b7de;
+li > a:hover {
+    box-shadow: 5px 10px 13px black;
 }
+
+li > a:visited {
+    background-color: red;
+}
+
+div:hover, a:hover{
+    background-color: black;
+    color: white;
+}
+
+main {
+    border: 1px solid black;
+    width: 80vw;
+    height: 80vh;
+    overflow:auto;
+    padding: 1rem;
+    margin: 2rem auto;
+}
+ main a{
+     text-decoration: none;
+     padding: .5rem .1rem;
+
+ }
+/*li:before {*/
+/*    position: absolute;*/
+/*    content: " ";*/
+/*    left: -20px;*/
+/*    top: 10px;*/
+/*    background: rgb(252,254,120);*/
+/*    background: linear-gradient(90deg, rgba(0,212,255,1) 50%, rgba(252,254,120,1) 50%);*/
+/*    border: .5px solid black;*/
+/*    width: 18px;*/
+/*    height: 13px;*/
+/*    z-index: -1;*/
+/*}*/
