@@ -30,9 +30,12 @@ li > a:hover {
     box-shadow: 5px 10px 13px black;
 }
 
-li > a:visited {
+.link-active {
+    border: 1px solid red;
     background-color: red;
+
 }
+
 
 div:hover, a:hover{
     background-color: black;
@@ -52,6 +55,8 @@ main {
      padding: .5rem .1rem;
 
  }
+
+
 /*li:before {*/
 /*    position: absolute;*/
 /*    content: " ";*/

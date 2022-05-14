@@ -6,36 +6,44 @@ import {RouterModule, Routes} from "@angular/router";
 import { AppComponent } from './app.component';
 import {
   UsersComponent,
-  UserComponent,
   PostsComponent,
   PostComponent,
   CommentsComponent,
   CommentComponent,
-  UserDetailComponent } from './components';
+  UserDetailComponent,
+  HomeComponent }
+  from './components';
+
+import {CheckService} from "./services";
+import {ResolverService} from "./services/resolver.service";
+
+
 
 
 const appRoutes: Routes = [
-  { path: '',
+  { path: '', redirectTo: '/home', pathMatch:"full"},
+  { path: 'home', component: HomeComponent ,
     children: [
-      { path: 'users', component: UsersComponent,
-        children: [
-          {path: ':id', component: UserDetailComponent},
-        ]
-      },
+      {path: 'users', component: UsersComponent, resolve: {users: ResolverService}},
+      {path: 'users/:id', component: UserDetailComponent, canActivate:[CheckService]},
+      {path: 'posts', component: PostsComponent},
       {path: 'posts', component: PostsComponent},
       {path: 'comments', component: CommentsComponent}
-    ]}
+      ]
+  }
 ]
+// {path: '**', component: PageNotFound},
+
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    UserComponent,
     PostsComponent,
     PostComponent,
     CommentsComponent,
     CommentComponent,
     UserDetailComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

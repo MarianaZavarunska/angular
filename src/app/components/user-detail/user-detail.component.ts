@@ -10,14 +10,20 @@ import {IUser} from "../../models/IUser";
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-   id : number;
    user: IUser;
+   users: IUser[];
 
-  constructor( private activatedRoute: ActivatedRoute, private  userService: UserService) {}
+  constructor( private activatedRoute: ActivatedRoute, private  userService: UserService) {
+      activatedRoute.data.subscribe(value => this.users = value['users']);
+  }
 
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(value => this.user = history.state.data);
+    this.activatedRoute.params.subscribe(value => {
+        if(history.state.data) this.user = history.state.data
+        else if(+value['id']) this.userService.getUser(+value['id']).subscribe(user => this.user = user)
+    });
+
   }
 
 
