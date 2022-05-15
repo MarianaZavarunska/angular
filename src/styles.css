@@ -31,6 +31,7 @@ li > a {
     background-color: var(--primary-color);
     padding: 1rem;
     color: var( --secondary-color);
+    text-transform: uppercase;
 }
 
 li > a:hover {
@@ -64,6 +65,15 @@ main {
      text-decoration: none;
      padding: .5rem .1rem;
  }
+
+.nav-btn {
+    width: 200px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: .8rem;
+}
 
 
 

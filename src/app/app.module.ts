@@ -12,10 +12,12 @@ import {
   CommentComponent,
   UserComponent,
   HomeComponent,
-  PostDetailComponent }
-  from './components';
+  PostDetailComponent,
+  CommentDetailComponent
+} from './components';
 
 import {CheckService} from "./services";
+
 
 
 const appRoutes: Routes = [
@@ -26,8 +28,8 @@ const appRoutes: Routes = [
       {path: 'users/:id', component: UserComponent, canActivate:[CheckService]},
       {path: 'posts', component: PostsComponent},
       {path: 'posts/:id', component: PostDetailComponent},
-      {path: 'posts', component: PostsComponent},
-      {path: 'comments', component: CommentsComponent}
+      {path: 'comments', component: CommentsComponent},
+      {path: 'comments/:id', component: CommentDetailComponent},
       ]
   }
 ]
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
     UserComponent,
     HomeComponent,
     PostDetailComponent,
+    CommentDetailComponent,
   ],
   imports: [
     BrowserModule,
