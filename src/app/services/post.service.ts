@@ -13,11 +13,15 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-   getPosts(): Observable<IPost[]> {
+
+ getPosts(): Observable<IPost[]> {
     return  this.http.get<IPost[]>(this.url)
  }
 
  getPost(userId: string): Observable<IPost>{
-    return  this.http.get<IPost>(`${this.url}/${userId}`);
+      console.log('run get post');
+    let result = this.http.get<IPost>(`${this.url}/${userId}`);
+    console.log(result)
+    return result;
  }
 }

@@ -15,7 +15,7 @@ export class PostComponent implements OnInit {
   constructor() { }
 
    changeName() : IPost {
-      const title = this.post.title[0].toUpperCase() + this.post.title.slice(1);
+      const title = this.post?.title[0].toUpperCase() + this.post?.title.slice(1);
       return  {...this.post, title: title};
    }
   ngOnInit(): void {

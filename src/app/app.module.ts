@@ -10,23 +10,22 @@ import {
   PostComponent,
   CommentsComponent,
   CommentComponent,
-  UserDetailComponent,
-  HomeComponent }
+  UserComponent,
+  HomeComponent,
+  PostDetailComponent }
   from './components';
 
 import {CheckService} from "./services";
-import {ResolverService} from "./services/resolver.service";
-
-
 
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch:"full"},
   { path: 'home', component: HomeComponent ,
     children: [
-      {path: 'users', component: UsersComponent, resolve: {users: ResolverService}},
-      {path: 'users/:id', component: UserDetailComponent, canActivate:[CheckService]},
+      {path: 'users', component: UsersComponent},
+      {path: 'users/:id', component: UserComponent, canActivate:[CheckService]},
       {path: 'posts', component: PostsComponent},
+      {path: 'posts/:id', component: PostDetailComponent},
       {path: 'posts', component: PostsComponent},
       {path: 'comments', component: CommentsComponent}
       ]
@@ -42,8 +41,9 @@ const appRoutes: Routes = [
     PostComponent,
     CommentsComponent,
     CommentComponent,
-    UserDetailComponent,
+    UserComponent,
     HomeComponent,
+    PostDetailComponent,
   ],
   imports: [
     BrowserModule,
