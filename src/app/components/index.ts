@@ -7,3 +7,4 @@ export * from './user/user.component';
 export * from './home/home.component';
 export * from './post-detail/post-detail.component';
 export * from './comment-detail/comment-detail.component';
+export * from './not-found/not-found.component';
