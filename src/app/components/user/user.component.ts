@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(value => {
+        
         if(history.state.data) this.user = history.state.data
         else if(+value['id']) this.userService.getUser(+value['id']).subscribe(user => this.user = user)
     });
