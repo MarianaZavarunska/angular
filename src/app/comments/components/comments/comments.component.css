@@ -1,0 +1,8 @@
+.comments-wrapper{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    gap: 1rem;
+    height: 80vh;
+    overflow: auto;
+}

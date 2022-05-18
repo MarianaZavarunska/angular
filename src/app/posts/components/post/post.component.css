@@ -1,0 +1,20 @@
+.post-link{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5rem;
+}
+
+.post-link > div{
+    padding: .5rem;
+}
+
+.post-link > div > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: .2rem .5rem;
+}
+.post-link > div > a.active{
+    color: red;
+}

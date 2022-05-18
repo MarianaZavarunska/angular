@@ -1,0 +1,19 @@
+.user-link{
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-link > div{
+    padding: .5rem;
+}
+
+.user-link > div > a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+    padding: .2rem .5rem;
+}
+.user-link > div > a.active{
+    color: red;
+}
