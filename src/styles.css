@@ -45,10 +45,10 @@ li > a:hover {
 }
 
 
-div:hover, a:hover{
-    background-color: var(--primary-color);
-    color: var( --secondary-color);
-}
+/*div:hover, a:hover{*/
+/*    background-color: var(--primary-color);*/
+/*    color: var( --secondary-color);*/
+/*}*/
 
 main {
     color: var(--primary-color);
