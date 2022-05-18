@@ -19,16 +19,21 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(({id}) => {
-      console.log(this.router.getCurrentNavigation()?.extras)
+
       const state = this.router.getCurrentNavigation()?.extras?.state?.['post'] as IPost;
-      console.log(state)
+
 
       if(state) {
         this.post = state;
+         this.userService.getUser(state.userId).subscribe(user => this.user = user);
       } else {
-        this.postService.getPost(id).subscribe(post => {console.log('subscribe', post); this.post = post} );
+        this.postService.getPost(id).subscribe(post =>  {
+          this.post = post;
+          console.log('request', post)
+          this.userService.getUser(post.userId).subscribe(user => this.user = user);
+        } );
       }
-     this.post && this.userService.getUser(this.post.userId).subscribe(user => this.user = user);
+
 
     });
   }
