@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { IUser } from 'src/app/models/IUser';
 import {UserService} from "../../services";
@@ -11,6 +11,8 @@ import {UserService} from "../../services";
 })
 export class UsersComponent implements OnInit {
    users: IUser[];
+  @Input()
+  user: IUser;
 
   constructor(private userService: UserService) {
     this.users = [];

@@ -1,0 +1,9 @@
+.posts-wrapper{
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.posts-container{
+    flex-basis: 80%;
+}
