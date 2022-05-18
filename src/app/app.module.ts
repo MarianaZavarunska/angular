@@ -20,21 +20,18 @@ import {
 import {CheckService} from "./services";
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent ,
+  { path: '', redirectTo: '/home', pathMatch:"full"},
+  { path: 'home', component: HomeComponent ,
     children: [
-      {path: '', redirectTo:'users', pathMatch:'full'},
       {path: 'users', component: UsersComponent},
       {path: 'users/:id', component: UserComponent, canActivate:[CheckService]},
-      {path: 'posts', component: PostsComponent, children: [
-          {path: ':id', component: PostDetailComponent }
-        ]},
-
+      {path: 'posts', component: PostsComponent},
+      {path: 'posts/:id', component: PostDetailComponent, canActivate:[CheckService]},
       {path: 'comments', component: CommentsComponent},
       {path: 'comments/:id', component: CommentDetailComponent, canActivate:[CheckService]},
-      {path: '**', component: NotFoundComponent},
       ]
   },
-
+  {path: '**', component: NotFoundComponent},
 ]  // TODO: routes as child route and render the component
 
 

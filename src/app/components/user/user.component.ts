@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services';
+
 import {IUser} from "../../models/IUser";
 
 @Component({
@@ -11,22 +11,17 @@ import {IUser} from "../../models/IUser";
 })
 export class UserComponent implements OnInit {
    user: IUser;
+   users: IUser[];
 
-  constructor( private activatedRoute: ActivatedRoute, private router: Router,private  userService: UserService) {
+  constructor( private activatedRoute: ActivatedRoute, private  userService: UserService) {
   }
 
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({id}) => {
-        console.log(this.router.getCurrentNavigation()?.extras)
-       const state =  this.router.getCurrentNavigation()?.extras?.state?.['user'] as IUser;
-       console.log(this.router.getCurrentNavigation()?.extras)
-
-     if(state) {
-         this.user = state;
-     } else {
-         this.userService.getUser(id).subscribe(user => this.user = user)
-     }
+    this.activatedRoute.params.subscribe(value => {
+        
+        if(history.state.data) this.user = history.state.data
+        else if(+value['id']) this.userService.getUser(+value['id']).subscribe(user => this.user = user)
     });
 
   }

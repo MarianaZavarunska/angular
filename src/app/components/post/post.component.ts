@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
       return  {...this.post, title: title};
    }
   ngOnInit(): void {
-      // this.post =  this.changeName();
+      this.post =  this.changeName();
   }
 
 
