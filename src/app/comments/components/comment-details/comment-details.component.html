@@ -1,5 +1,5 @@
-<div>
-    <p>{{comment?.id}}. {{comment?.name}}</p>
-    <p>Content: {{comment?.body}}</p>
-    <p>Email: {{comment?.email}}</p>
+<div *ngIf="comment">
+    <p>{{comment.id}}. {{comment.name}}</p>
+    <p>Content: {{comment.body}}</p>
+    <p>Email: {{comment.email}}</p>
 </div>

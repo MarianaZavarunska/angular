@@ -1,5 +1,5 @@
-<div>
-    <p>{{post?.id}}. {{post?.title}}</p>
-    <p>Content: {{post?.body}}</p>
-    <p>Author: {{post?.userId}}</p>
+<div *ngIf="post">
+    <p>{{post.id}}. {{post.title}}</p>
+    <p>Content: {{post.body}}</p>
+    <p>Author: {{post.userId}}</p>
 </div>

@@ -1,6 +1,6 @@
-<div class="user-details-container">
-    <p>{{user?.id}}. {{user?.name}} {{user?.username}}</p>
-    <p>Email: {{user?.email}}</p>
-    <p>Phone: {{user?.phone}}</p>
-    <p>Website: {{user?.website}}</p>
+<div class="user-details-container" *ngIf="user">
+    <p>{{user.id}}. {{user.name}} {{user.username}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Phone: {{user.phone}}</p>
+    <p>Website: {{user.website}}</p>
 </div>
