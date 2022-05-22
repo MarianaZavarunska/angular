@@ -1,14 +1,14 @@
 import {NgModule} from "@angular/core";
-import {RouterModule, Routes} from "@angular/router";
+import {PreloadAllModules, RouterModule, Routes} from "@angular/router";
 
 import {HomeComponent} from "./components/home/home.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'users', loadChildren: () => import('./users/users.module').then(cl=> cl.UsersModule)},
-    {path: 'posts', loadChildren: () => import('./posts/posts.module').then(cl=> cl.PostsModule)},
-    {path: 'comments', loadChildren: () => import('./comments/comments.module').then(cl=> cl.CommentsModule)},
-    {path: 'albums', loadChildren: () => import('./albums/albums.module').then(cl=> cl.AlbumsModule)},
+    {path: 'users', loadChildren: () => import('./modules/users/users.module').then(cl=> cl.UsersModule)},
+    {path: 'posts', loadChildren: () => import('./modules/posts/posts.module').then(cl=> cl.PostsModule)},
+    {path: 'comments', loadChildren: () => import('./modules/comments/comments.module').then(cl=> cl.CommentsModule)},
+    {path: 'albums', loadChildren: () => import('./modules/albums/albums.module').then(cl=> cl.AlbumsModule)},
 ]
 
 @NgModule({
