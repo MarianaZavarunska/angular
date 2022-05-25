@@ -1,1 +1,22 @@
-<p>register works!</p>
+<div class="form-container">
+    <div class="form-title">
+        Sign Up
+    </div>
+
+    <form [formGroup]="form">
+        <div>
+            <label>username:</label>
+            <input type="text" formControlName="username">
+        </div>
+        <div>
+            <label>password:</label>
+            <input type="text" formControlName="password">
+        </div>
+        <div>
+            <label>confirm password:</label>
+            <input type="text" formControlName="confirmPassword">
+        </div>
+        <button (click)="register()">Register</button>
+    </form>
+</div>
+
