@@ -1,0 +1,15 @@
+<div class="form-container">
+    <div class="form-title">
+        Sign In
+    </div>
+    <form [formGroup]="form">
+        <div><label>username: <input type="text" formControlName="username"></label></div>
+        <div><label>password: <input type="text" formControlName="password"></label></div>
+        <div class="form-btns">
+            <button (click)="login()">Login</button>
+            <a routerLink="register">Sign up?</a>
+        </div>
+    </form>
+</div>
+
+
