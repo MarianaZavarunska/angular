@@ -35,6 +35,12 @@
     align-items: center;
     gap: 1rem;
 }
+
+.form-container > form > div.error{
+    font-size: 1rem;
+    color: red;
+}
+
 .form-container > form > div >input{
     width: 200px;
 }
@@ -47,4 +53,12 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     padding: 0.5rem;
+}
+
+/*TODO: Disabled style*/
+
+ button.disabled{
+    background-color:  black !important;
+    color: rgba(16, 16, 16, 0.3)  !important;
+    border-color: rgba(195, 195, 195, 0.3)  !important;
 }

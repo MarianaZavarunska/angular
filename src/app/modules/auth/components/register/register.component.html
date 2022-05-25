@@ -8,6 +8,7 @@
             <label>username:</label>
             <input type="text" formControlName="username">
         </div>
+        <div *ngIf="formUserNameError" class="error">{{formUserNameError}}</div>
         <div>
             <label>password:</label>
             <input type="text" formControlName="password">
@@ -16,7 +17,10 @@
             <label>confirm password:</label>
             <input type="text" formControlName="confirmPassword">
         </div>
-        <button (click)="register()">Register</button>
+        <div *ngIf="form.errors" class="error">
+            {{form.errors['different']}}
+        </div>
+        <button [disabled]="form.invalid" (click)="register()">Register</button>
     </form>
 </div>
 
