@@ -6,14 +6,11 @@ import {CarsComponent, CarComponent} from "./components";
 
 const routes: Routes = [
     {
-        path: '', component: CarsComponent,
-        children: [
-            {path: ':id', component: CarComponent}
-        ]}
+        path: '', component: CarsComponent}
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes), HttpClientModule],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class CarsRoutingModule { }

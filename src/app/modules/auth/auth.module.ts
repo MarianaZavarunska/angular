@@ -19,7 +19,7 @@ import { AuthService } from './services';
     ReactiveFormsModule,
   ],
   providers:[
-      AuthService,
+      AuthService
   ]
 })
 export class AuthModule { }

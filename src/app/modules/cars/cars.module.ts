@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { CarsComponent, CarComponent} from './components';
 import {CarsRoutingModule} from "./cars-routing.module";
+import { CarsService } from './services';
+import {MainInterceptor} from "../../main.interceptor";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,7 +17,15 @@ import {CarsRoutingModule} from "./cars-routing.module";
   imports: [
     CommonModule,
     CarsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+      CarsService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    multi: true,
+    useClass: MainInterceptor}
   ]
 })
 export class CarsModule { }

@@ -35,7 +35,7 @@
 
 .form-container > form > div.form-btns {
     display: flex;
-    gap: 3rem;
+    gap: 5.5rem;
     justify-content: center;
     align-items: center;
 }

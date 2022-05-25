@@ -9,7 +9,7 @@ import {urls} from "../../../constants";
   providedIn: 'root'
 })
 export class AuthService {
-  private accessTokenKey = 'accessToken'
+  private accessTokenKey = 'access'
 
   constructor(private http: HttpClient) {
 
@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   setAccessToken(token: IToken):void{
-    localStorage.setItem(this.accessTokenKey, token.accessToken);
+    localStorage.setItem(this.accessTokenKey, token.access);
   }
 
   getAccessToken(): string{
@@ -33,5 +33,9 @@ export class AuthService {
 
   deleteAccessToken(): void {
     localStorage.removeItem(this.accessTokenKey)
+  }
+
+  isUserAuthenticated(): boolean{
+    return !!localStorage.getItem(this.accessTokenKey);
   }
 }
