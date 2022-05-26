@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {ICar} from "../../../../models";
 import {CarsService} from "../../services";
+import {regex} from "../../../../constants";
 
 
 @Component({
@@ -25,9 +26,9 @@ export class CarsComponent implements OnInit {
 
   _createForm():void{
     this.form = new FormGroup({
-      model: new FormControl(null),
-      year: new FormControl(null),
-      price: new FormControl(null),
+      model: new FormControl(null , [Validators.pattern(regex.model)]),
+      year: new FormControl(1990, [Validators.min(1990), Validators.max(new Date().getFullYear())]),
+      price: new FormControl(0, [Validators.min(0), Validators.max(1000000)]),
     });
   }
 

@@ -13,7 +13,7 @@
             <label>price:</label>
             <input type="number" formControlName="price">
         </div>
-        <button [disabled]="form.invalid" (click)="create()">Create</button>
+        <button [disabled]="form.invalid" (click)="create()">{{!carForUpdate ? 'Create' : 'Update'}}</button>
     </form>
 </div>
 

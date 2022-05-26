@@ -55,10 +55,8 @@
     padding: 0.5rem;
 }
 
-/*TODO: Disabled style*/
-
- button.disabled{
-    background-color:  black !important;
-    color: rgba(16, 16, 16, 0.3)  !important;
-    border-color: rgba(195, 195, 195, 0.3)  !important;
+.form-container > form > button:disabled{
+    background-color:  grey;
+    color: darkgrey;
+    border-color: rgba(195, 195, 195, 0.3);
 }
