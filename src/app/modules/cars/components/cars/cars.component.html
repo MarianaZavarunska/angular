@@ -1,2 +1,24 @@
-<app-car *ngFor="let car of cars" [car]="car" [cars]="cars"></app-car>
-<!--<router-outlet></router-outlet>-->
+<div class="form-car">
+    <form [formGroup]="form">
+        <div>
+            <label>model:</label>
+            <input type="text" formControlName="model">
+        </div>
+
+        <div>
+            <label>year:</label>
+            <input type="number" formControlName="year">
+        </div>
+        <div>
+            <label>price:</label>
+            <input type="number" formControlName="price">
+        </div>
+        <button [disabled]="form.invalid" (click)="create()">Create</button>
+    </form>
+</div>
+
+<div class="cars-container">
+    <app-car *ngFor="let car of cars" [car]="car" (onUpdateCar)="update(car)" (onDeleteCar)="delete(car)"></app-car>
+</div>
+
+

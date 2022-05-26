@@ -22,14 +22,15 @@ export class CarsService {
   }
 
   create(car: ICar): Observable<ICar>{
-    return this.http.post<ICar>(urls.cars,car);
+    return this.http.post<ICar>(urls.cars, car);
   }
 
-  update(car: ICar, id: number):Observable<ICar>{
+  update(id: number | undefined ,car: Partial<ICar>,):Observable<ICar>{
     return this.http.patch<ICar>(`${urls.cars}/${id}`,car);
   }
 
-  deleteById(id: number): void{
-    this.http.delete(`${urls.cars}/${id}`);
+  deleteById(id: number | undefined): Observable<void> {
+    return this.http.delete<void>(`${urls.cars}/${id}`)
   }
+
 }

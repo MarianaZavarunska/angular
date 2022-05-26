@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup } from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 import { ICar } from 'src/app/models';
 
@@ -8,29 +7,28 @@ import { ICar } from 'src/app/models';
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css']
 })
-export class CarComponent implements OnInit {
-  form: FormGroup;
 
-  @Input() cars: ICar[];
+export class CarComponent implements OnInit {
+
   @Input() car: ICar;
+  @Output() onDeleteCar: EventEmitter<ICar> = new EventEmitter();
+  @Output() onUpdateCar: EventEmitter<ICar> = new EventEmitter();
 
   constructor() {
-    this._createForm();
+
   }
 
   ngOnInit(): void {
   }
 
-  _createForm():void{
-    this.form = new FormGroup({
-      model: new FormControl(null),
-      year: new FormControl(null),
-      price: new FormControl(null),
-    });
+  onUpdate(car: ICar) {
+   this.onUpdateCar.emit(car);
   }
 
-  create():void {
-    console.log(this.form.getRawValue());
+  onDelete(car: ICar) {
+    this.onDeleteCar.emit(car);
   }
+
+
 
 }
