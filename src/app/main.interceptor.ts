@@ -16,13 +16,13 @@ import { AuthService } from './modules/auth/services';
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
-  private isRefreshing = false
+   isRefreshing = false
 
   constructor(private authService: AuthService, private router: Router) {
     console.log('interceptor')
   }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> | any{
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     const isAuthenticated = this.authService.isUserAuthenticated()
 
@@ -33,7 +33,7 @@ export class MainInterceptor implements HttpInterceptor {
         catchError((res: HttpErrorResponse) => {
           if(res && res.error && res.status === 401) {
 
-            this.handleUnauthenticatedError(request, next)
+            return this.handleUnauthenticatedError(request, next)
           }
           return throwError(() => new Error('token invalid or expired'));
         })
@@ -50,6 +50,7 @@ export class MainInterceptor implements HttpInterceptor {
   handleUnauthenticatedError(request: HttpRequest<any>, next: HttpHandler): any{
     if(!this.isRefreshing){
       this.isRefreshing = true;
+
       return this.authService.refresh().pipe(
           switchMap((tokens:IToken) => {
             return next.handle(this.addToken(request, tokens.access))
@@ -57,7 +58,8 @@ export class MainInterceptor implements HttpInterceptor {
           catchError(() => {
             this.isRefreshing = false
             this.authService.deleteTokens();
-            this.router.navigate(['api/auth/login'])
+            this.router.navigate(['api/auth/login']);
+            
             return throwError(() => new Error('token invalid or expired'))
           })
       )
