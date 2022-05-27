@@ -39,16 +39,17 @@ export class RegisterComponent implements OnInit {
       delete formData.confirmPassword;
 
 
-        this.authService.register(formData).subscribe(
-            () => {
+        this.authService.register(formData).subscribe( {
+            next:  () => {
 
                 this.router.navigate(['api/auth/login'])
             },
-            (e) =>  {
+            error: (e) =>  {
                 console.log(e)
                 this.formUserNameError = e.error.username[0];
-                },
-        )
+            },
+        })
+
   }
 
   _checkPassword(form: AbstractControl):ValidationErrors|null{

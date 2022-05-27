@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   login(): void {
         this.authService.login(this.form.getRawValue()).subscribe(value => {
             console.log(value)
-            this.authService.setAccessToken(value);
+            this.authService.setTokens(value);
             this.router.navigate(['cars']);
         })
     }

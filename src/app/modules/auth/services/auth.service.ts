@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 
 import {IToken, IUser} from "../../../models";
 import {urls} from "../../../constants";
@@ -10,6 +10,7 @@ import {urls} from "../../../constants";
 })
 export class AuthService {
   private accessTokenKey = 'access'
+  private  refreshTokenKey = 'refresh'
 
   constructor(private http: HttpClient) {
 
@@ -23,16 +24,31 @@ export class AuthService {
     return this.http.post<IToken>(urls.auth, user);
   }
 
-  setAccessToken(token: IToken):void{
+  refresh(): Observable<IToken> {
+    const refresh = this.getRefreshToken();
+    return this.http.post<IToken>(`${urls.auth}/refresh`, {refresh}).pipe(
+        tap((tokens: IToken) => {
+          this.setTokens(tokens)
+        })
+    )
+  }
+
+  setTokens(token: IToken):void{
     localStorage.setItem(this.accessTokenKey, token.access);
+    localStorage.setItem(this.refreshTokenKey, token.refresh);
   }
 
   getAccessToken(): string{
     return localStorage.getItem(this.accessTokenKey) as string;
   }
 
-  deleteAccessToken(): void {
+  getRefreshToken(): string{
+    return localStorage.getItem(this.refreshTokenKey) as string;
+  }
+
+  deleteTokens(): void {
     localStorage.removeItem(this.accessTokenKey)
+    localStorage.removeItem(this.refreshTokenKey)
   }
 
   isUserAuthenticated(): boolean{

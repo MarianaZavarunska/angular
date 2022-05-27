@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
-import { ICar } from 'src/app/models';
+import {ICar} from 'src/app/models';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.css']
 })
+
 
 export class CarComponent implements OnInit {
 

@@ -7,6 +7,7 @@ import {CarsRoutingModule} from "./cars-routing.module";
 import { CarsService } from './services';
 import {MainInterceptor} from "../../main.interceptor";
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpModule} from "../../http.module";
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     CommonModule,
     CarsRoutingModule,
-    HttpClientModule,
+    HttpModule,
     ReactiveFormsModule
   ],
   providers: [

@@ -12,14 +12,10 @@ import {AppRoutingModule} from "./app-routing.module";
     AppComponent,
   ],
   imports: [
-    BrowserModule,HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    multi: true,
-    useClass: MainInterceptor
-  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
